@@ -38,11 +38,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
+    private static final String DATA_DISABLED_PREF = "data_disabled_icon";
 
     private static final String SIM_EMPTY_SWITCH = "no_sim_cluster_switch";
     private SubscriptionManager mSm;
 
     private SwitchPreference mNoSims;
+    private SwitchPreference mNoData;
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -88,6 +90,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             if (!TelephonyManager.getDefault().isMultiSimEnabled() || mSm.getActiveSubscriptionInfoCount() <= 0){
                 getPreferenceScreen().removePreference(mNoSims);
             }
+        }
+
+        if (mSm.getActiveSubscriptionInfoCount() <= 0) {
+                getPreferenceScreen().removePreference(mNoData);
         }
     }
 
