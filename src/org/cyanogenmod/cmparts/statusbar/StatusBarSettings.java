@@ -84,6 +84,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         updateQuickPulldownSummary(mQuickPulldown.getIntValue(0));
 
         mNoSims = (SwitchPreference) findPreference(SIM_EMPTY_SWITCH);
+        mNoData = (SwitchPreference) findPreference(DATA_DISABLED_PREF);
         mSm = (SubscriptionManager) getSystemService(getContext().TELEPHONY_SUBSCRIPTION_SERVICE);
 
         if (mNoSims != null) { 
